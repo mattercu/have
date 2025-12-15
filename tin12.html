@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Ký Môn Tốt Nghiệp</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+```
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        overflow-x: hidden;
+    }
+
+    .container {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        max-width: 600px;
+        width: 100%;
+        padding: 40px;
+        animation: slideIn 0.6s ease-out;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .container::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(45deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+        animation: shimmer 3s infinite;
+    }
+
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes shimmer {
+        0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+        100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+
+    h1 {
+        text-align: center;
+        color: #667eea;
+        margin-bottom: 10px;
+        font-size: 2em;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        animation: fadeInDown 0.8s ease-out;
+    }
+
+    .subtitle {
+        text-align: center;
+        color: #666;
+        margin-bottom: 30px;
+        font-size: 0.9em;
+        animation: fadeInDown 1s ease-out;
+    }
+
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .form-group {
+        margin-bottom: 25px;
+        animation: fadeInUp 0.6s ease-out backwards;
+        position: relative;
+    }
+
+    .form-group:nth-child(1) { animation-delay: 0.1s; }
+    .form-group:nth-child(2) { animation-delay: 0.2s; }
+    .form-group:nth-child(3) { animation-delay: 0.3s; }
+    .form-group:nth-child(4) { animation-delay: 0.4s; }
+    .form-group:nth-child(5) { animation-delay: 0.5s; }
+    .form-group:nth-child(6) { animation-delay: 0.6s; }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+        color: #333;
+        font-weight: 600;
+        font-size: 0.95em;
+        transition: color 0.3s ease;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid #e0e0e0;
+        border-radius: 10px;
+        font-size: 1em;
+        transition: all 0.3s ease;
+        background: white;
+        outline: none;
+    }
+
+    input:focus,
+    select:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+        transform: translateY(-2px);
+    }
+
+    input:hover,
+    select:hover {
+        border-color: #764ba2;
+    }
+
+    .checkbox-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-top: 10px;
+    }
+
+    .checkbox-item {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        user-select: none;
+        transition: transform 0.2s ease;
+    }
+
+    .checkbox-item:hover {
+        transform: translateX(5px);
+    }
+
+    .checkbox-item input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        margin-right: 8px;
+        cursor: pointer;
+        accent-color: #667eea;
+    }
+
+    .checkbox-item label {
+        margin: 0;
+        cursor: pointer;
+        font-weight: 500;
+    }
+
+    .btn-container {
+        display: flex;
+        gap: 15px;
+        margin-top: 30px;
+    }
+
+    button {
+        flex: 1;
+        padding: 14px 30px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.1em;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .btn-submit {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-submit:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+    }
+
+    .btn-submit:active {
+        transform: translateY(-1px);
+    }
+
+    .btn-reset {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        color: white;
+        box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
+    }
+
+    .btn-reset:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(245, 87, 108, 0.6);
+    }
+
+    button::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+    }
+
+    button:active::before {
+        width: 300px;
+        height: 300px;
+    }
+
+    .required {
+        color: #f5576c;
+    }
+
+    /* Modal Overlay */
+    .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(10px);
+        z-index: 999;
+        animation: fadeIn 0.4s ease-out;
+    }
+
+    .modal-overlay.active {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    /* Success Card */
+    .success-card {
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        border-radius: 30px;
+        padding: 50px;
+        max-width: 650px;
+        max-height: 85vh;
+        width: 90%;
+        position: relative;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+        animation: cardPopIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    /* Custom Scrollbar */
+    .success-card::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .success-card::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+    }
+
+    .success-card::-webkit-scrollbar-thumb {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 10px;
+    }
+
+    .success-card::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    }
+
+    @keyframes cardPopIn {
+        0% {
+            opacity: 0;
+            transform: scale(0.3) rotate(-10deg);
+        }
+        60% {
+            transform: scale(1.05) rotate(2deg);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
+    }
+
+    .success-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 8px;
+        background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #667eea);
+        background-size: 200% 100%;
+        animation: gradientMove 3s linear infinite;
+    }
+
+    @keyframes gradientMove {
+        0% { background-position: 0% 50%; }
+        100% { background-position: 200% 50%; }
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        border: none;
+        color: white;
+        font-size: 24px;
+        font-weight: bold;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 20px rgba(245, 87, 108, 0.4);
+        z-index: 10;
+    }
+
+    .close-btn:hover {
+        transform: rotate(90deg) scale(1.15);
+        box-shadow: 0 8px 30px rgba(245, 87, 108, 0.6);
+    }
+
+    .success-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .success-icon-wrapper {
+        display: inline-block;
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    .success-icon {
+        width: 100px;
+        height: 100px;
+        background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: iconBounce 0.8s ease-out;
+        box-shadow: 0 10px 40px rgba(17, 153, 142, 0.4);
+        position: relative;
+    }
+
+    @keyframes iconBounce {
+        0% {
+            transform: scale(0) rotate(-180deg);
+            opacity: 0;
+        }
+        50% {
+            transform: scale(1.2) rotate(10deg);
+        }
+        100% {
+            transform: scale(1) rotate(0deg);
+            opacity: 1;
+        }
+    }
+
+    .success-icon::before {
+        content: '✓';
+        font-size: 60px;
+        color: white;
+        font-weight: bold;
+        animation: checkAppear 0.5s ease-out 0.3s backwards;
+    }
+
+    @keyframes checkAppear {
+        from {
+            transform: scale(0);
+            opacity: 0;
+        }
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    .success-icon::after {
+        content: '';
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        border: 3px solid rgba(17, 153, 142, 0.3);
+        border-radius: 50%;
+        animation: ripple 1.5s ease-out infinite;
+    }
+
+    @keyframes ripple {
+        0% {
+            transform: scale(1);
+            opacity: 1;
+        }
+        100% {
+            transform: scale(1.5);
+            opacity: 0;
+        }
+    }
+
+    .success-title {
+        font-size: 2.2em;
+        font-weight: bold;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 10px;
+        animation: titleSlide 0.6s ease-out 0.2s backwards;
+    }
+
+    @keyframes titleSlide {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .success-subtitle {
+        color: #666;
+        font-size: 1.1em;
+        animation: titleSlide 0.6s ease-out 0.3s backwards;
+    }
+
+    .info-grid {
+        display: grid;
+        gap: 20px;
+        margin-top: 30px;
+    }
+
+    .info-card {
+        background: white;
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        transition: all 0.3s ease;
+        animation: cardSlideIn 0.5s ease-out backwards;
+        border-left: 4px solid #667eea;
+    }
+
+    .info-card:nth-child(1) { animation-delay: 0.4s; border-left-color: #667eea; }
+    .info-card:nth-child(2) { animation-delay: 0.5s; border-left-color: #764ba2; }
+    .info-card:nth-child(3) { animation-delay: 0.6s; border-left-color: #f093fb; }
+    .info-card:nth-child(4) { animation-delay: 0.7s; border-left-color: #11998e; }
+    .info-card:nth-child(5) { animation-delay: 0.8s; border-left-color: #38ef7d; }
+    .info-card:nth-child(6) { animation-delay: 0.9s; border-left-color: #f5576c; }
+
+    @keyframes cardSlideIn {
+        from {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .info-card:hover {
+        transform: translateX(10px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .info-icon {
+        font-size: 2em;
+        min-width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        border-radius: 12px;
+    }
+
+    .info-content {
+        flex: 1;
+    }
+
+    .info-label {
+        font-size: 0.85em;
+        color: #999;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 5px;
+    }
+
+    .info-value {
+        font-size: 1.15em;
+        color: #333;
+        font-weight: 600;
+    }
+
+    .footer-message {
+        text-align: center;
+        margin-top: 35px;
+        padding-top: 30px;
+        border-top: 2px dashed #e0e0e0;
+        animation: fadeIn 1s ease-out 1s backwards;
+    }
+
+    .footer-message p {
+        font-size: 1.1em;
+        color: #667eea;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    .footer-stars {
+        font-size: 1.5em;
+        animation: starTwinkle 2s ease-in-out infinite;
+    }
+
+    @keyframes starTwinkle {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+    }
+
+    @media (max-width: 600px) {
+        .container {
+            padding: 25px;
+        }
+        
+        h1 {
+            font-size: 1.5em;
+        }
+        
+        .btn-container {
+            flex-direction: column;
+        }
+
+        .success-card {
+            padding: 30px 20px;
+        }
+
+        .success-title {
+            font-size: 1.6em;
+        }
+
+        .info-card {
+            flex-direction: column;
+            text-align: center;
+        }
+    }
+
+    .floating-shape {
+        position: fixed;
+        border-radius: 50%;
+        opacity: 0.5;
+        animation: float 6s ease-in-out infinite;
+        z-index: -1;
+    }
+
+    .shape1 {
+        width: 100px;
+        height: 100px;
+        background: rgba(102, 126, 234, 0.3);
+        top: 10%;
+        left: 10%;
+        animation-delay: 0s;
+    }
+
+    .shape2 {
+        width: 150px;
+        height: 150px;
+        background: rgba(118, 75, 162, 0.3);
+        bottom: 10%;
+        right: 10%;
+        animation-delay: 2s;
+    }
+
+    .shape3 {
+        width: 80px;
+        height: 80px;
+        background: rgba(240, 147, 251, 0.3);
+        top: 50%;
+        left: 5%;
+        animation-delay: 4s;
+    }
+
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0) rotate(0deg);
+        }
+        50% {
+            transform: translateY(-30px) rotate(180deg);
+        }
+    }
+
+    .confetti {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: #667eea;
+        animation: confetti-fall 3s linear forwards;
+    }
+
+    @keyframes confetti-fall {
+        to {
+            transform: translateY(100vh) rotate(720deg);
+            opacity: 0;
+        }
+    }
+</style>
+```
+
+</head>
+<body>
+    <div class="floating-shape shape1"></div>
+    <div class="floating-shape shape2"></div>
+    <div class="floating-shape shape3"></div>
+
+```
+<div class="container">
+    <h1>📚 ĐĂNG KÝ MÔN TỐT NGHIỆP</h1>
+    <p class="subtitle">Tin học 12 - Năm học 2024-2025</p>
+    
+    <div id="registrationForm">
+        <div class="form-group">
+            <label for="studentName">Họ và tên <span class="required">*</span></label>
+            <input type="text" id="studentName" name="studentName" placeholder="Nguyễn Văn A" required>
+        </div>
+
+        <div class="form-group">
+            <label for="studentId">Mã số sinh viên <span class="required">*</span></label>
+            <input type="text" id="studentId" name="studentId" placeholder="SV123456" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email <span class="required">*</span></label>
+            <input type="email" id="email" name="email" placeholder="example@email.com" required>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Số điện thoại <span class="required">*</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="0123456789" required>
+        </div>
+
+        <div class="form-group">
+            <label for="class">Lớp <span class="required">*</span></label>
+            <select id="class" name="class" required>
+                <option value="">-- Chọn lớp --</option>
+                <option value="12A1">12A1</option>
+                <option value="12A2">12A2</option>
+                <option value="12A3">12A3</option>
+                <option value="12A4">12A4</option>
+                <option value="12A5">12A5</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Môn đăng ký tốt nghiệp <span class="required">*</span></label>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="html" name="subjects" value="HTML/CSS">
+                    <label for="html">HTML/CSS</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="javascript" name="subjects" value="JavaScript">
+                    <label for="javascript">JavaScript</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="python" name="subjects" value="Python">
+                    <label for="python">Python</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="database" name="subjects" value="Cơ sở dữ liệu">
+                    <label for="database">Cơ sở dữ liệu</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="network" name="subjects" value="Mạng máy tính">
+                    <label for="network">Mạng máy tính</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn-container">
+            <button type="button" class="btn-submit" onclick="submitForm()">Đăng Ký</button>
+            <button type="button" class="btn-reset" onclick="resetForm()">Làm Lại</button>
+        </div>
+    </div>
+</div>
+
+<!-- Success Modal -->
+<div id="modalOverlay" class="modal-overlay">
+    <div class="success-card">
+        <button class="close-btn" onclick="closeModal()">×</button>
+        
+        <div class="success-header">
+            <div class="success-icon-wrapper">
+                <div class="success-icon"></div>
+            </div>
+            <h2 class="success-title">Đăng Ký Thành Công!</h2>
+            <p class="success-subtitle">Thông tin của bạn đã được ghi nhận</p>
+        </div>
+        
+        <div class="info-grid" id="infoGrid">
+            <!-- Content will be inserted here -->
+        </div>
+        
+        <div class="footer-message">
+            <p>Chúc bạn thi tốt nghiệp thành công!</p>
+            <div class="footer-stars">✨ 🎓 ✨</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function submitForm() {
+        const name = document.getElementById('studentName').value.trim();
+        const studentId = document.getElementById('studentId').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const classValue = document.getElementById('class').value;
+        const subjects = document.querySelectorAll('input[name="subjects"]:checked');
+
+        if (!name || !studentId || !email || !phone || !classValue) {
+            alert('⚠️ Vui lòng điền đầy đủ thông tin bắt buộc!');
+            return;
+        }
+
+        if (subjects.length === 0) {
+            alert('⚠️ Vui lòng chọn ít nhất một môn học!');
+            return;
+        }
+
+        const selectedSubjects = Array.from(subjects).map(s => s.value).join(', ');
+
+        // Create info cards
+        const infoGrid = document.getElementById('infoGrid');
+        infoGrid.innerHTML = `
+            <div class="info-card">
+                <div class="info-icon">👤</div>
+                <div class="info-content">
+                    <div class="info-label">Họ và tên</div>
+                    <div class="info-value">${name}</div>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <div class="info-icon">🎓</div>
+                <div class="info-content">
+                    <div class="info-label">Mã số sinh viên</div>
+                    <div class="info-value">${studentId}</div>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <div class="info-icon">📧</div>
+                <div class="info-content">
+                    <div class="info-label">Email</div>
+                    <div class="info-value">${email}</div>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <div class="info-icon">📱</div>
+                <div class="info-content">
+                    <div class="info-label">Số điện thoại</div>
+                    <div class="info-value">${phone}</div>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <div class="info-icon">🏫</div>
+                <div class="info-content">
+                    <div class="info-label">Lớp</div>
+                    <div class="info-value">${classValue}</div>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <div class="info-icon">📚</div>
+                <div class="info-content">
+                    <div class="info-label">Môn học đăng ký</div>
+                    <div class="info-value">${selectedSubjects}</div>
+                </div>
+            </div>
+        `;
+
+        // Show modal
+        document.getElementById('modalOverlay').classList.add('active');
+
+        // Create confetti effect
+        createConfetti();
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('modalOverlay');
+        modal.classList.remove('active');
+        resetForm();
+    }
+
+    function resetForm() {
+        document.getElementById('studentName').value = '';
+        document.getElementById('studentId').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('phone').value = '';
+        document.getElementById('class').value = '';
+        document.querySelectorAll('input[name="subjects"]').forEach(cb => cb.checked = false);
+    }
+
+    function createConfetti() {
+        const colors = ['#667eea', '#764ba2', '#f093fb', '#f5576c', '#11998e', '#38ef7d'];
+        const modalOverlay = document.getElementById('modalOverlay');
+        
+        for (let i = 0; i < 60; i++) {
+            setTimeout(() => {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.top = '-10px';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = Math.random() * 0.5 + 's';
+                confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                modalOverlay.appendChild(confetti);
+
+                setTimeout(() => confetti.remove(), 3500);
+            }, i * 25);
+        }
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('modalOverlay').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeModal();
+        }
+    });
+
+    // Focus effects
+    document.querySelectorAll('input, select').forEach(element => {
+        element.addEventListener('focus', function() {
+            this.parentElement.querySelector('label').style.color = '#667eea';
+        });
+
+        element.addEventListener('blur', function() {
+            this.parentElement.querySelector('label').style.color = '#333';
+        });
+    });
+</script>
+```
+
+</body>
+</html>
